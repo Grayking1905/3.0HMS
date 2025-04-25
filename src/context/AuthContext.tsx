@@ -5,6 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { onAuthStateChanged, User, GoogleAuthProvider, signInWithPopup, signOut as firebaseSignOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Skeleton } from '@/components/ui/skeleton'; // For loading state
+import { useToast } from '@/hooks/use-toast'; // Import useToast
 
 interface AuthContextType {
   user: User | null;
@@ -18,6 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const { toast } = useToast(); // Initialize useToast
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -35,9 +37,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true);
       await signInWithPopup(auth, provider);
       // onAuthStateChanged will handle setting the user state
-    } catch (error) {
+      toast({
+          title: 'Signed In',
+          description: 'Successfully signed in with Google.',
+      });
+    } catch (error: any) {
       console.error("Error signing in with Google:", error);
-      // Handle error (e.g., show a toast message)
+      // Show specific error to the user
+      toast({
+          title: 'Sign In Failed',
+          description: `Could not sign in with Google. ${error.message || 'Please check console for details.'}`,
+          variant: 'destructive',
+      });
+      // Handle specific errors if needed
+      // if (error.code === 'auth/popup-closed-by-user') { ... }
     } finally {
         // Ensure loading is set to false even if onAuthStateChanged hasn't fired yet
         // Small delay to allow state propagation if needed, but usually not necessary
@@ -50,8 +63,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(true);
       await firebaseSignOut(auth);
       // onAuthStateChanged will handle setting the user state to null
-    } catch (error) {
+      toast({
+          title: 'Signed Out',
+          description: 'You have been successfully signed out.',
+      });
+    } catch (error: any) {
       console.error("Error signing out:", error);
+       toast({
+           title: 'Sign Out Failed',
+           description: error.message || 'Could not sign out.',
+           variant: 'destructive',
+       });
        // Handle error
     } finally {
          // Ensure loading is set to false
@@ -60,8 +82,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Display loading indicator while checking auth state
-  if (loading) {
-    // You can replace this with a more sophisticated loading screen/skeleton layout
+  if (loading && !user) { // Only show full screen loading initially
      return (
        <div className="flex items-center justify-center min-h-screen">
          <div className="space-y-2">
