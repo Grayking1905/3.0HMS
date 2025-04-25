@@ -63,10 +63,12 @@ export function Header() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                 <DropdownMenuItem disabled> {/* Link to Profile page */}
-                    <User className="mr-2 h-4 w-4" />
-                   <span>Profile</span>
-                 </DropdownMenuItem>
+                 <Link href="/profile" passHref legacyBehavior>
+                     <DropdownMenuItem> {/* Link to Profile page */}
+                        <User className="mr-2 h-4 w-4" />
+                       <span>Profile</span>
+                     </DropdownMenuItem>
+                 </Link>
                 {/* Add other items like Settings if needed */}
                 {/* <DropdownMenuItem>
                     <Settings className="mr-2 h-4 w-4" />
