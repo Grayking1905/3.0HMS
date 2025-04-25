@@ -216,7 +216,7 @@ export function MedicineList() {
                                         )}
                                        <div className="flex-grow">
                                            <p className="font-medium">{item.name}</p>
-                                           <p className="text-sm text-muted-foreground">Price: ${item.price.toFixed(2)}</p>
+                                           <p className="text-sm text-muted-foreground">Price: ₹{item.price.toFixed(2)}</p> {/* Changed $ to ₹ */}
                                            <div className="flex items-center space-x-2 mt-1">
                                                <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => handleUpdateQuantity(item.medicineId, item.quantity - 1)} disabled={item.quantity <= 1}>-</Button>
                                                <span>{item.quantity}</span>
@@ -224,7 +224,7 @@ export function MedicineList() {
                                            </div>
                                        </div>
                                        <div className="text-right">
-                                           <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                                           <p className="font-medium">₹{(item.price * item.quantity).toFixed(2)}</p> {/* Changed $ to ₹ */}
                                             <Button variant="ghost" size="icon" className="h-8 w-8 mt-1 text-destructive hover:text-destructive" onClick={() => handleRemoveFromCart(item.medicineId)}>
                                                <X className="h-4 w-4" />
                                            </Button>
@@ -240,7 +240,7 @@ export function MedicineList() {
                             <SheetFooter className="mt-auto pt-4">
                                 <div className="flex justify-between w-full font-semibold text-lg mb-4">
                                    <span>Total:</span>
-                                   <span>${calculateTotal().toFixed(2)}</span>
+                                   <span>₹{calculateTotal().toFixed(2)}</span> {/* Changed $ to ₹ */}
                                </div>
                                 <Button
                                     className="w-full bg-primary hover:bg-primary/90"
@@ -306,4 +306,3 @@ const CardFooter = ({ children, className }: { children: React.ReactNode, classN
   <div className={cn("flex items-center p-6 pt-0", className)}>{children}</div>
 );
 // --- End Basic Card Components ---
-

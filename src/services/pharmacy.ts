@@ -73,12 +73,13 @@ async function seedInitialMedicines() {
     if (snapshot.empty) {
         console.log("Seeding initial medicine data...");
         const initialMedicines: Omit<Medicine, 'id'>[] = [
-            { name: 'Paracetamol 500mg', description: 'Relieves mild to moderate pain and reduces fever.', price: 3.99, stock: 150, category: 'Pain Relief', imageUrl: 'https://picsum.photos/seed/paracetamol/200/200' },
-            { name: 'Ibuprofen 200mg', description: 'Anti-inflammatory drug for pain relief.', price: 5.49, stock: 120, category: 'Pain Relief', imageUrl: 'https://picsum.photos/seed/ibuprofen/200/200' },
-            { name: 'Amoxicillin 500mg', description: 'Antibiotic for bacterial infections (Prescription Required).', price: 12.50, stock: 80, category: 'Antibiotics', imageUrl: 'https://picsum.photos/seed/amoxicillin/200/200' },
-            { name: 'Loratadine 10mg', description: 'Antihistamine for allergy relief.', price: 8.99, stock: 200, category: 'Allergy', imageUrl: 'https://picsum.photos/seed/loratadine/200/200' },
-            { name: 'Vitamin C 1000mg', description: 'Supplement for immune support.', price: 9.99, stock: 300, category: 'Vitamins', imageUrl: 'https://picsum.photos/seed/vitaminc/200/200' },
-            { name: 'Omeprazole 20mg', description: 'Reduces stomach acid (Prescription often required).', price: 15.75, stock: 95, category: 'Gastrointestinal', imageUrl: 'https://picsum.photos/seed/omeprazole/200/200' },
+            // Prices updated to reflect Rupees (₹)
+            { name: 'Paracetamol 500mg', description: 'Relieves mild to moderate pain and reduces fever.', price: 30.00, stock: 150, category: 'Pain Relief', imageUrl: 'https://picsum.photos/seed/paracetamol/200/200' },
+            { name: 'Ibuprofen 200mg', description: 'Anti-inflammatory drug for pain relief.', price: 45.50, stock: 120, category: 'Pain Relief', imageUrl: 'https://picsum.photos/seed/ibuprofen/200/200' },
+            { name: 'Amoxicillin 500mg', description: 'Antibiotic for bacterial infections (Prescription Required).', price: 120.00, stock: 80, category: 'Antibiotics', imageUrl: 'https://picsum.photos/seed/amoxicillin/200/200' },
+            { name: 'Loratadine 10mg', description: 'Antihistamine for allergy relief.', price: 75.00, stock: 200, category: 'Allergy', imageUrl: 'https://picsum.photos/seed/loratadine/200/200' },
+            { name: 'Vitamin C 1000mg', description: 'Supplement for immune support.', price: 99.99, stock: 300, category: 'Vitamins', imageUrl: 'https://picsum.photos/seed/vitaminc/200/200' },
+            { name: 'Omeprazole 20mg', description: 'Reduces stomach acid (Prescription often required).', price: 150.75, stock: 95, category: 'Gastrointestinal', imageUrl: 'https://picsum.photos/seed/omeprazole/200/200' },
         ];
 
         for (const medData of initialMedicines) {

@@ -3,7 +3,7 @@ import type { Medicine } from '@/services/pharmacy';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Package, DollarSign, Info, ShoppingCart } from 'lucide-react'; // Added ShoppingCart icon
+import { Package, Info, ShoppingCart } from 'lucide-react'; // Added ShoppingCart icon, removed DollarSign as we use ₹ directly
 
 interface MedicineCardProps {
   medicine: Medicine;
@@ -32,7 +32,7 @@ export function MedicineCard({ medicine, onAddToCart }: MedicineCardProps) {
           Stock: {medicine.stock !== undefined ? (medicine.stock > 0 ? `${medicine.stock} available` : 'Out of Stock') : 'N/A'}
         </p>
         <p className="text-lg font-bold text-primary flex items-center">
-          <DollarSign className="mr-1 h-5 w-5" /> {medicine.price.toFixed(2)}
+           <span className="mr-1">₹</span> {medicine.price.toFixed(2)} {/* Changed $ to ₹ */}
         </p>
       </CardContent>
       <CardFooter className="p-4 pt-0 mt-auto">
