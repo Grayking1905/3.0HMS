@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Siren, PhoneCall, Activity, CheckCircle, AlertCircle } from 'lucide-react'; // Added AlertCircle
+import { Siren, PhoneCall, Activity, CheckCircle, AlertCircle, AlertTriangle } from 'lucide-react'; // Added AlertCircle, AlertTriangle
 import { useAuth } from '@/context/AuthContext';
 import { sendSOSAlert } from '@/services/emergency';
 import { useToast } from '@/hooks/use-toast';
