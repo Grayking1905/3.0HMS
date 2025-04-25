@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetTrigger } from '@/components/ui/sheet'; // Import Sheet components
 import { Separator } from '../ui/separator';
+import { cn } from '@/lib/utils'; // Import cn utility function
 
 interface CartItem extends OrderItem {
     imageUrl?: string; // To display image in cart
@@ -98,7 +99,7 @@ export function MedicineList() {
         const maxStock = medicine?.stock ?? Infinity;
         const newQuantity = Math.max(1, Math.min(quantity, maxStock)); // Ensure quantity is at least 1 and not more than stock
 
-         if (newQuantity > maxStock && maxStock !== Infinity) {
+         if (quantity > maxStock && maxStock !== Infinity) {
              toast({ title: 'Stock Limit', description: `Only ${maxStock} units available.`, variant: 'destructive' });
          }
 
@@ -289,6 +290,7 @@ function MedicineListSkeleton() {
 }
 
 // Basic Card components for Skeleton (if not globally available/imported)
+// Make sure `cn` is imported if used here
 const Card = ({ children, className }: { children: React.ReactNode, className?: string }) => (
   <div className={cn("border rounded-lg shadow-sm bg-card text-card-foreground", className)}>
     {children}
@@ -304,3 +306,4 @@ const CardFooter = ({ children, className }: { children: React.ReactNode, classN
   <div className={cn("flex items-center p-6 pt-0", className)}>{children}</div>
 );
 // --- End Basic Card Components ---
+
