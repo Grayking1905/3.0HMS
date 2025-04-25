@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/header';
 import { AuthProvider } from '@/context/AuthContext'; // Import AuthProvider
+import { SOSButton } from '@/components/emergency/sos-button'; // Import SOSButton
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' }); // Use Inter
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <AuthProvider> {/* Wrap with AuthProvider */}
           <Header />
           <main className="flex-grow p-4 md:p-8">{children}</main>
+          <SOSButton /> {/* Add SOS Button here, it will position itself */}
           <Toaster />
         </AuthProvider>
       </body>

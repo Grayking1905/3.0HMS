@@ -2,7 +2,7 @@
 'use client'; // Add 'use client' because we are using hooks (useAuth)
 
 import Link from 'next/link';
-import { Hospital, User, LogIn, LogOut } from 'lucide-react'; // Import LogIn, LogOut
+import { Hospital, User, LogIn, LogOut, AlertTriangle } from 'lucide-react'; // Import LogIn, LogOut, AlertTriangle
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -33,11 +33,12 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Optional Navigation Links */}
-        {/* <nav className="flex items-center space-x-4 text-sm font-medium">
-          <Link href="/dashboard" className="transition-colors hover:text-primary">Dashboard</Link>
-          <Link href="/profile" className="transition-colors hover:text-primary">Profile</Link>
-        </nav> */}
+        {/* Emergency Dashboard Link */}
+        <nav className="flex items-center space-x-4 text-sm font-medium">
+             <Link href="/emergency-dashboard" className="flex items-center transition-colors hover:text-destructive text-destructive/80">
+                <AlertTriangle className="mr-1 h-4 w-4" /> Emergency Dashboard
+             </Link>
+        </nav>
 
         <div className="ml-auto flex items-center space-x-4">
           {loading ? (
