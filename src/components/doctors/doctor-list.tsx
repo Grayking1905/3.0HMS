@@ -95,7 +95,7 @@ export function DoctorList() {
          await sendEmail({
              to: user.email, // Send to patient
              subject: `Appointment Confirmation with ${doctor.name}`,
-             body: `Dear ${user.displayName || 'Patient'},\n\nYour appointment with Dr. ${doctor.name} (${doctor.specialty}) is confirmed.\n\nWe look forward to seeing you!\n\nBest regards,\nHealthChain Team`
+             body: `Dear ${user.displayName || 'Patient'},\n\nYour appointment with Dr. ${doctor.name} (${doctor.specialty}) is confirmed.\n\nWe look forward to seeing you!\n\nBest regards,\nCureNova Team` // Updated company name
          });
 
          // Optional: Send confirmation to doctor if email exists
@@ -103,7 +103,7 @@ export function DoctorList() {
              await sendEmail({
                  to: doctor.email,
                  subject: `New Appointment Booking`,
-                 body: `Dr. ${doctor.name},\n\nA new appointment has been booked with you by ${user.displayName} (${user.email}).\n\nPlease check your schedule.\n\nHealthChain System`
+                 body: `Dr. ${doctor.name},\n\nA new appointment has been booked with you by ${user.displayName} (${user.email}).\n\nPlease check your schedule.\n\nCureNova System` // Updated company name
              });
          }
 

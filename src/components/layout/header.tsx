@@ -30,7 +30,7 @@ export function Header() {
         <Link href="/" className="flex items-center space-x-2 mr-6">
           <Hospital className="h-6 w-6 text-primary" />
           <span className="font-bold text-lg text-primary">
-            HealthChain
+            CureNova
           </span>
         </Link>
 

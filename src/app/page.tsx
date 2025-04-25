@@ -10,7 +10,7 @@ import { Stethoscope, MessageSquare, BrainCircuit, Pill, FileScan } from 'lucide
 export default function Home() {
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center text-primary">Welcome to HealthChain</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-primary">Welcome to CureNova</h1>
 
       <Tabs defaultValue="appointments" className="w-full">
         <TabsList className="grid w-full grid-cols-4 mb-8"> {/* Updated grid columns to 4 */}

@@ -9,8 +9,8 @@ import { SOSButton } from '@/components/emergency/sos-button'; // Import SOSButt
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' }); // Use Inter
 
 export const metadata: Metadata = {
-  title: 'HealthChain',
-  description: 'A comprehensive healthcare solution by Firebase Studio',
+  title: 'CureNova',
+  description: 'Innovation and high-quality care by Firebase Studio',
 };
 
 export default function RootLayout({

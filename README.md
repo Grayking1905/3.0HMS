@@ -1,6 +1,6 @@
-# Firebase Studio - HealthChain
+# Firebase Studio - CureNova
 
-This is a Next.js application built with Firebase Studio, demonstrating various healthcare-related features powered by Firebase and Google AI (Genkit).
+This is a Next.js application built with Firebase Studio, demonstrating various healthcare-related features powered by Firebase and Google AI (Genkit), focusing on innovation and high-quality care.
 
 ## Features
 
