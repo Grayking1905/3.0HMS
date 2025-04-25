@@ -1,10 +1,11 @@
 import { DoctorList } from '@/components/doctors/doctor-list';
 import { ChatInterface } from '@/components/chat/chat-interface';
 import { SymptomChecker } from '@/components/ai/symptom-checker';
-import { MedicineList } from '@/components/pharmacy/medicine-list'; // Import MedicineList
+import { PrescriptionReader } from '@/components/ai/prescription-reader'; // Import PrescriptionReader
+import { MedicineList } from '@/components/pharmacy/medicine-list';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Stethoscope, MessageSquare, BrainCircuit, Pill } from 'lucide-react'; // Import Pill icon
+import { Stethoscope, MessageSquare, BrainCircuit, Pill, FileScan } from 'lucide-react'; // Import FileScan icon
 
 export default function Home() {
   return (
@@ -56,17 +57,45 @@ export default function Home() {
         </TabsContent>
 
         <TabsContent value="ai-assistant">
-          <Card className="shadow-lg rounded-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                 <BrainCircuit className="mr-2 text-primary" /> AI Medical Assistant
-              </CardTitle>
-              <CardDescription>Check your symptoms and get basic health advice.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <SymptomChecker />
-            </CardContent>
-          </Card>
+          {/* AI Assistant Section using nested Tabs */}
+          <Tabs defaultValue="symptom-checker" className="w-full">
+             <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="symptom-checker">
+                   <BrainCircuit className="mr-2 h-4 w-4" /> Symptom Checker
+                </TabsTrigger>
+                <TabsTrigger value="prescription-reader">
+                  <FileScan className="mr-2 h-4 w-4" /> Prescription Reader
+                </TabsTrigger>
+             </TabsList>
+
+             <TabsContent value="symptom-checker">
+                <Card className="shadow-md rounded-lg border">
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <BrainCircuit className="mr-2 text-primary" /> AI Medical Assistant
+                    </CardTitle>
+                    <CardDescription>Check your symptoms and get basic health advice.</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <SymptomChecker />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+             <TabsContent value="prescription-reader">
+                <Card className="shadow-md rounded-lg border">
+                    <CardHeader>
+                      <CardTitle className="flex items-center">
+                        <FileScan className="mr-2 text-primary" /> AI Prescription Reader
+                      </CardTitle>
+                      <CardDescription>Upload an image of your prescription to extract the text.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <PrescriptionReader />
+                    </CardContent>
+                </Card>
+             </TabsContent>
+          </Tabs>
         </TabsContent>
 
         <TabsContent value="pharmacy"> {/* Added Pharmacy tab content */}
