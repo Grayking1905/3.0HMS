@@ -2,7 +2,7 @@
 'use client'; // Add 'use client' because we are using hooks (useAuth)
 
 import Link from 'next/link';
-import { Hospital, User, LogIn, LogOut, AlertTriangle } from 'lucide-react'; // Import LogIn, LogOut, AlertTriangle
+import { Hospital, User, LogIn, LogOut, AlertTriangle, ShieldAlert } from 'lucide-react'; // Import LogIn, LogOut, AlertTriangle, ShieldAlert
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -17,6 +17,7 @@ import { useAuth } from '@/context/AuthContext'; // Import useAuth
 
 export function Header() {
   const { user, loading, signInWithGoogle, signOut } = useAuth(); // Use the auth context
+  // TODO: Add logic to check if user is admin to show Fraud Dashboard link
 
   const getInitials = (name?: string | null) => {
       if (!name) return '';
@@ -33,10 +34,14 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Emergency Dashboard Link */}
+        {/* Navigation Links */}
         <nav className="flex items-center space-x-4 text-sm font-medium">
              <Link href="/emergency-dashboard" className="flex items-center transition-colors hover:text-destructive text-destructive/80">
-                <AlertTriangle className="mr-1 h-4 w-4" /> Emergency Dashboard
+                <AlertTriangle className="mr-1 h-4 w-4" /> Emergency
+             </Link>
+             {/* TODO: Conditionally render based on admin role */}
+             <Link href="/admin/fraud-dashboard" className="flex items-center transition-colors hover:text-destructive text-destructive/80">
+                <ShieldAlert className="mr-1 h-4 w-4" /> Fraud Alerts
              </Link>
         </nav>
 
