@@ -2,7 +2,7 @@
 'use client'; // Add 'use client' because we are using hooks (useAuth)
 
 import Link from 'next/link';
-import { Hospital, User, LogIn, LogOut, AlertTriangle, ShieldAlert } from 'lucide-react'; // Import LogIn, LogOut, AlertTriangle, ShieldAlert
+import { HeartPulse, User, LogIn, LogOut, AlertTriangle, ShieldAlert } from 'lucide-react'; // Changed Hospital to HeartPulse, Imported LogIn, LogOut, AlertTriangle, ShieldAlert
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -28,7 +28,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
         <Link href="/" className="flex items-center space-x-2 mr-6">
-          <Hospital className="h-6 w-6 text-primary" />
+          {/* Changed Icon from Hospital to HeartPulse */}
+          <HeartPulse className="h-6 w-6 text-primary" />
           <span className="font-bold text-lg text-primary">
             CureNova
           </span>
