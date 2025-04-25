@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Calendar, Stethoscope } from 'lucide-react';
+import { cn } from '@/lib/utils'; // Import cn
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -11,7 +12,10 @@ interface DoctorCardProps {
 
 export function DoctorCard({ doctor, onBook }: DoctorCardProps) {
   return (
-    <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-xl rounded-lg">
+    <Card className={cn(
+        "overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm", // Base styles from Card component
+        "transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.02]" // Added transition and hover effects
+    )}>
       <CardHeader className="p-0">
         <div className="relative h-48 w-full">
            <Image
@@ -19,6 +23,7 @@ export function DoctorCard({ doctor, onBook }: DoctorCardProps) {
             alt={`Dr. ${doctor.name}`}
             layout="fill"
             objectFit="cover"
+            className="rounded-t-lg" // Ensure image corners match card top corners
           />
         </div>
       </CardHeader>
@@ -30,7 +35,7 @@ export function DoctorCard({ doctor, onBook }: DoctorCardProps) {
         <p className="text-sm text-muted-foreground">{doctor.experience} years experience</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button onClick={() => onBook(doctor.id)} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+        <Button onClick={() => onBook(doctor.id)} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors">
           <Calendar className="mr-2 h-4 w-4" /> Book Appointment
         </Button>
       </CardFooter>

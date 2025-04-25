@@ -96,7 +96,7 @@ export function SOSButton() {
             <Button
                 variant="destructive"
                 size="lg" // Make button prominent
-                className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-lg animate-pulse z-50" // Positioned bottom-right, pulsing animation
+                className={`fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-lg z-50 transition-all duration-300 ${!isLoading ? 'animate-pulse' : ''}`} // Correctly apply pulse only when not loading, add transition
                 onClick={handleSOSClick}
                 disabled={isLoading}
                 aria-label="Send SOS Emergency Alert"

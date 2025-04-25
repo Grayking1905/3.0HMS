@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Package, Info, ShoppingCart } from 'lucide-react'; // Added ShoppingCart icon, removed DollarSign as we use ₹ directly
+import { cn } from '@/lib/utils'; // Import cn
 
 interface MedicineCardProps {
   medicine: Medicine;
@@ -12,14 +13,18 @@ interface MedicineCardProps {
 
 export function MedicineCard({ medicine, onAddToCart }: MedicineCardProps) {
   return (
-    <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-xl rounded-lg flex flex-col h-full">
+    <Card className={cn(
+        "overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm", // Base styles
+        "flex flex-col h-full", // Ensure flex layout for footer alignment
+        "transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.02]" // Added transition and hover effects
+    )}>
       <CardHeader className="p-0 relative h-40 w-full">
            <Image
             src={medicine.imageUrl || `https://picsum.photos/seed/${medicine.id}/300/200`} // Provide a default placeholder
             alt={medicine.name}
             layout="fill"
             objectFit="contain" // Use contain to show the whole image
-            className="p-2" // Add some padding around the image
+            className="p-2 rounded-t-lg" // Add some padding around the image and round top corners
           />
       </CardHeader>
       <CardContent className="p-4 flex-grow">
@@ -38,7 +43,7 @@ export function MedicineCard({ medicine, onAddToCart }: MedicineCardProps) {
       <CardFooter className="p-4 pt-0 mt-auto">
         <Button
             onClick={() => onAddToCart(medicine)}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors"
             disabled={medicine.stock === 0} // Disable if out of stock
             aria-label={`Add ${medicine.name} to cart`}
         >

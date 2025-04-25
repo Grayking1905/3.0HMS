@@ -23,7 +23,10 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <AuthProvider> {/* Wrap with AuthProvider */}
           <Header />
-          <main className="flex-grow p-4 md:p-8">{children}</main>
+          {/* Added animation class */}
+          <main className="flex-grow p-4 md:p-8 animate-fadeIn">
+              {children}
+          </main>
           <SOSButton /> {/* Add SOS Button here, it will position itself */}
           <Toaster />
         </AuthProvider>

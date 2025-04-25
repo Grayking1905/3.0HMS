@@ -71,3 +71,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Add animation utility */
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+}
+
+/* Define fadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: slight upward movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
