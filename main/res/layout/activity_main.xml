@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+
+    android:background="@drawable/background_gradient">
+
+    <!-- SOS Button -->
+
+    <!-- Self-Defense Videos Button -->
+
+    <!-- Legal Information Button -->
+      <TextView
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this app for emergency situation and senarios"
+        android:textColor="@color/green_500" /> 
+        
+    <TextView
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOS Emergency And Safety App"
+        android:textColor="@color/green_500" /> 
+
+    <Button
+        android:id="@+id/btnSos"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_sos"
+        android:drawablePadding="10dp"
+        android:text="ALERT" />
+
+    <Button
+        android:id="@+id/btnSelfDefense"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_self_defense"
+        android:drawablePadding="10dp"
+        android:text="Self-Defense Videos" />
+
+    <Button
+        android:id="@+id/btnCrime"
+        style="@style/ButtonStyle"
+        android:layout_width="381dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_crime"
+        android:drawablePadding="10dp"
+        android:text="Cyber Crime Portal" />
+
+    <Button
+        android:id="@+id/btnLegalInfo"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_laws"
+        android:drawablePadding="10dp"
+        android:text="Legal Information" />
+
+
+</LinearLayout>
+ 
